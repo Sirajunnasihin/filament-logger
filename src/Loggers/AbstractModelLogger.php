@@ -71,6 +71,7 @@ abstract class AbstractModelLogger
             ->event($event)
             ->performedOn($model)
             ->withProperties($this->getLoggableAttributes($model, $attributes))
+            ->withProperties(['ip' => request()->ip(), 'user_agent' => request()->userAgent()])
             ->log($description);
     }
 
